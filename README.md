@@ -1,6 +1,3 @@
-# SwiftPackageHello
-swift package demo
-
 [创建一个可执行文件](https://swift.org/getting-started/#using-the-package-manager)
 
 A target is considered as an executable if it contains a file named main.swift. The package manager will compile that file into a binary executable.
@@ -49,6 +46,10 @@ Hello, world!
 - Create a new file in the Sources/Hello directory called Greeter.swift, and enter the following code:
 
 ```
+$ touch Sources/Hello/Greeter.swift
+$ vim Sources/Hello/Greeter.swift
+```
+```
 func sayHello(name: String) {
     print("Hello, \(name)!")
 }
@@ -57,6 +58,10 @@ func sayHello(name: String) {
 - The sayHello(name:) function takes a single String argument and prints our “Hello” greeting before, substituting the word “World” with the function argument.
 
 - Now, open main.swift again, and replace the existing contents with the following code:
+
+```
+vim Sources/Hello/main.swift  
+```
 
 ```
 if CommandLine.arguments.count != 2 {
