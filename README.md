@@ -1,4 +1,6 @@
-[创建一个可执行文件](https://swift.org/getting-started/#using-the-package-manager)
+[中文](READMe_CN.md)
+
+[Using the Package Manager](https://swift.org/getting-started/#using-the-package-manager)
 
 A target is considered as an executable if it contains a file named main.swift. The package manager will compile that file into a binary executable.
 
@@ -79,3 +81,13 @@ if CommandLine.arguments.count != 2 {
 ```
 $ swift run Hello `whoami`
 ```
+
+## generate  Xcode Project
+
+```
+swift package generate-xcodeproj
+open Hello.xcodeproj 
+```
+
+
+
