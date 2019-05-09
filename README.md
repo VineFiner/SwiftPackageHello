@@ -1,4 +1,4 @@
-[中文](READMe_CN.md)
+[中文](README_CN.md)
 
 [Using the Package Manager](https://swift.org/getting-started/#using-the-package-manager)
 
