@@ -86,3 +86,104 @@ $ swift run Hello `whoami`
 swift package generate-xcodeproj
 open Hello.xcodeproj 
 ```
+
+[Swift Package Manager](<https://swift.org/package-manager/>)
+
+## 使用依赖关系进行创建
+
+```
+mkdir Modules
+cd Modules
+mkdir Hello
+mkdir Say
+cd Hello
+swift package init --type executable
+
+cd Say
+swift package init --type library
+```
+
+## 完成 Say framework
+
+1、创建 文件 
+
+```
+➜  Say git:(master) ✗ ls
+Package.swift README.md     Say.xcodeproj Sources       Tests
+```
+
+```
+➜  Say git:(master) ✗ touch Sources/Say/Greeter.swift
+```
+
+```
+vim Sources/Say/Greeter.swift
+```
+
+```
+//
+//  Greeter.swift
+//  Say
+//
+//  Created by vine on 2019/5/12.
+//
+
+import Foundation
+
+public func sayHello(name: String) {
+    print("Hello, \(name)!")
+}
+```
+
+## 完成 Hello
+
+1、添加依赖路径
+
+```
+let package = Package(
+    name: "Hello",
+    dependencies: [
+        // Dependencies declare other packages that this package depends on.
+        // .package(url: /* package url */, from: "1.0.0"),
+        /// Add a dependency to a local package on the filesystem.
+        .package(path: "../Say")
+    ],
+```
+
+2、targe 中添加依赖
+
+```
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: "Hello",
+            dependencies: ["Say"]),
+        .testTarget(
+            name: "HelloTests",
+            dependencies: ["Hello"]),
+    ]
+```
+
+3、调用 framework
+
+```
+import Say
+
+print("Hello, world!")
+
+// command line argument
+
+/*
+ swift run Hello Tom
+ 
+ Hello, Tom!
+ */
+if CommandLine.arguments.count != 2 {
+    print("Usage: hello NAME")
+} else {
+    let name = CommandLine.arguments[1]
+    sayHello(name: name)
+}
+```
+
