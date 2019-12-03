@@ -1,0 +1,10 @@
+# eg docker-compose up
+version: "3"
+
+services:
+  # 容器名称
+  say:
+  # 构建配置
+    build:
+      context: .
+      dockerfile: Dockerfile

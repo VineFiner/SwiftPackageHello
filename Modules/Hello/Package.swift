@@ -9,7 +9,8 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         /// Add a dependency to a local package on the filesystem.
-        .package(path: "../Say")
+        // `./` 当前文件夹下的目录
+        .package(path: "./Say")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
